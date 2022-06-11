@@ -18,7 +18,9 @@
   "homepage": "https://github.com/Helen2813/frontend-project-lvl1#readme",
   "type": "module",
   "bin": {
-    "brain-games": "bin/brain-games.js"
+    "brain-even": "bin/brain-even.js",
+    "brain-games": "bin/brain-games.js",
+    "brain-calc": "bin/brain-calc.js"
   },
   "dependencies": {
     "eslint": "^8.17.0",
