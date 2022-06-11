@@ -7,3 +7,7 @@ export const greetingUserByName = () => {
     
     return name;
 };
+
+export const getRandomNumber = (max = 10) => {
+    return Math.floor(Math.random() * max);
+};
