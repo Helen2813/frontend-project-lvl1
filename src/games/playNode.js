@@ -9,9 +9,13 @@ const correctAnsweers = [];
 for (let i = 0; i < ROUNDS_NUMBER + 1; i++) {
     const randomNode = getRandomNumber(100) + 1;
     const firstRandomNumber = randomNode * getRandomNumber() + 1;
-    const seconNumber = randomNode * getRandomNumber() + 1;
+    let secondNumber = randomNode * getRandomNumber() + 1;
+
+    while (firstRandomNumber === secondNumber) {
+        secondNumber = randomNode * getRandomNumber() + 1;
+    };
     
-    const taskString = `${firstRandomNumber} ${seconNumber}`;
+    const taskString = `${firstRandomNumber} ${secondNumber}`;
     tasks.push(taskString);
 
     correctAnsweers.push(String(randomNode));
