@@ -6,19 +6,27 @@ const QESTION = 'Find the greatest common divisor of given numbers.';
 const tasks = [];
 const correctAnsweers = [];
 
-for (let i = 0; i < ROUNDS_NUMBER + 1; i++) {
-    const randomNode = getRandomNumber(100) + 1;
-    const firstRandomNumber = randomNode * getRandomNumber() + 1;
-    let secondNumber = randomNode * getRandomNumber() + 1;
+const getGreatestCommonDivisor = (x, y) => {
+    if (y === 0) {
+      return Math.abs(x);
+    };
 
-    while (firstRandomNumber === secondNumber) {
-        secondNumber = randomNode * getRandomNumber() + 1;
+    return getGreatestCommonDivisor(y, x % y);
+};
+
+for (let i = 0; i < ROUNDS_NUMBER + 1; i++) {
+    const firstNumber = getRandomNumber() + 1;
+    let secondNumber = getRandomNumber() + 1;
+
+    while (firstNumber === secondNumber) {
+        secondNumber = getRandomNumber() + 1;
     };
     
-    const taskString = `${firstRandomNumber} ${secondNumber}`;
+    const taskString = `${firstNumber} ${secondNumber}`;
     tasks.push(taskString);
 
-    correctAnsweers.push(String(randomNode));
+    const correctAnswer = getGreatestCommonDivisor(firstNumber, secondNumber);
+    correctAnsweers.push(String(correctAnswer));
 };
 
 export const playNode = () => play(QESTION, tasks, correctAnsweers);
