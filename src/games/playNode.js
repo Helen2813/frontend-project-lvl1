@@ -8,8 +8,8 @@ const correctAnsweers = [];
 
 for (let i = 0; i < ROUNDS_NUMBER + 1; i++) {
     const randomNode = getRandomNumber(100) + 1;
-    const firstRandomNumber = randomNode * getRandomNumber();
-    const seconNumber = randomNode * getRandomNumber();
+    const firstRandomNumber = randomNode * getRandomNumber() + 1;
+    const seconNumber = randomNode * getRandomNumber() + 1;
     
     const taskString = `${firstRandomNumber} ${seconNumber}`;
     tasks.push(taskString);
