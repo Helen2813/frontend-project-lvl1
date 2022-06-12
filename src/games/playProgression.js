@@ -11,7 +11,7 @@ const correctAnsweers = [];
 const getProgression = (index, multiplier, startNumber, length) => {
   const result = Array(length)
     .fill(startNumber)
-    .map((number, ind) => number = startNumber + (multiplier * ind));
+    .map((_, ind) => startNumber + (multiplier * ind));
   const answer = String(result[index]);
   result[index] = HIDDEN;
 
