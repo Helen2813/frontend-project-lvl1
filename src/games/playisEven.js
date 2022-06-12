@@ -1,5 +1,6 @@
 import { play } from '../index.js';
 import { ROUNDS_NUMBER } from '../index.js';
+import { getRandomNumber } from '../cli.js';
 
 const ANSWER_YES = 'yes';
 const ANSWER_NO = 'no';
@@ -8,7 +9,7 @@ const tasks = [];
 const correctAnsweers = [];
 
 for (let i = 0; i < ROUNDS_NUMBER + 1; i++) {
-    const randomNumber = Math.floor(Math.random() * 100);
+    const randomNumber = getRandomNumber(100);
     tasks.push(randomNumber);
 
     const correctAnsweer = ((randomNumber % 2) === 0) ? ANSWER_YES : ANSWER_NO;
