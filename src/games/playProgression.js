@@ -5,31 +5,38 @@ import { getRandomNumber } from '../cli.js';
 const QESTION = 'What number is missing in the progression?';
 const HIDDEN = '..';
 const MIN_PROGRESSION_LENGTH = 5;
-const tasks = [];
-const correctAnsweers = [];
 
-const getProgression = (index, multiplier, startNumber, length) => {
+const createProgression = (multiplier, startNumber, length) => {
   const result = Array(length)
     .fill(startNumber)
     .map((_, ind) => startNumber + (multiplier * ind));
-  const answer = String(result[index]);
-  result[index] = HIDDEN;
 
-  return [result.join(' '), answer];
+  return result;
 };
 
-for (let i = 0; i < ROUNDS_NUMBER + 1; i += 1) {
-  const multiplier = MIN_PROGRESSION_LENGTH;
-  const startNumber = getRandomNumber();
-  const length = getRandomNumber(MIN_PROGRESSION_LENGTH) + MIN_PROGRESSION_LENGTH;
-  const randomIndex = getRandomNumber(length);
+const createTasksAndAnswers = () => {
+  const tasks = [];
+  const correctAnsweers = [];
 
-  const [progression, correctAnswer] = getProgression(randomIndex, multiplier, startNumber, length);
-  tasks.push(progression);
+  for (let i = 0; i < ROUNDS_NUMBER + 1; i += 1) {
+    const multiplier = MIN_PROGRESSION_LENGTH;
+    const startNumber = getRandomNumber();
+    const length = getRandomNumber(MIN_PROGRESSION_LENGTH) + MIN_PROGRESSION_LENGTH;
+    const randomIndex = getRandomNumber(length);
+  
+    const progression = createProgression(multiplier, startNumber, length);
+    const answer = String(progression[randomIndex]);
+    progression[randomIndex] = HIDDEN;
+    tasks.push(progression.join(' '));
+  
+    correctAnsweers.push(answer);
+  }
 
-  correctAnsweers.push(correctAnswer);
-}
+  return [tasks, correctAnsweers];
+};
 
-const playProgression = () => play(QESTION, tasks, correctAnsweers);
+const [ tasks, answers ] = createTasksAndAnswers();
+
+const playProgression = () => play(QESTION, tasks, answers);
 
 export default playProgression;

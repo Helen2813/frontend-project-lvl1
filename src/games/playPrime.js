@@ -4,10 +4,8 @@ import { getRandomNumber } from '../cli.js';
 const QESTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const ANSWER_YES = 'yes';
 const ANSWER_NO = 'no';
-const tasks = [];
-const correctAnsweers = [];
 
-const getIsPrime = (number) => {
+const isNumberPrime = (number) => {
   if (number < 2) {
     return false;
   }
@@ -27,13 +25,22 @@ const getIsPrime = (number) => {
   return true;
 };
 
-for (let i = 0; i < ROUNDS_NUMBER + 1; i += 1) {
-  const randomNumber = getRandomNumber(100);
-  tasks.push(randomNumber);
+const createTasksAndAnswers = () => {
+  const tasks = [];
+  const correctAnsweers = [];
 
-  correctAnsweers.push(getIsPrime(randomNumber) ? ANSWER_YES : ANSWER_NO);
-}
+  for (let i = 0; i < ROUNDS_NUMBER + 1; i += 1) {
+    const randomNumber = getRandomNumber(100);
+    tasks.push(randomNumber);
+  
+    correctAnsweers.push(isNumberPrime(randomNumber) ? ANSWER_YES : ANSWER_NO);
+  }
 
-const playPrime = () => play(QESTION, tasks, correctAnsweers);
+  return [tasks, correctAnsweers];
+};
+
+const [tasks, answers] = createTasksAndAnswers();
+
+const playPrime = () => play(QESTION, tasks, answers);
 
 export default playPrime;
