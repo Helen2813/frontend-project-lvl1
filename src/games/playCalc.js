@@ -22,11 +22,13 @@ const createTasksAndAnswers = () => {
     const firstRandomNumber = getRandomNumber(100);
     const secondRandomNumber = getRandomNumber(100);
     const randomOperation = ARITHMETIC_SIGNS[getRandomNumber(ROUNDS_NUMBER)];
-  
+
     const taskString = `${firstRandomNumber} ${randomOperation} ${secondRandomNumber}`;
     tasks.push(taskString);
-  
-    const correctAnsweer = String(calculate(firstRandomNumber, secondRandomNumber, randomOperation));
+
+    const correctAnsweer = String(
+      calculate(firstRandomNumber, secondRandomNumber, randomOperation),
+    );
     correctAnsweers.push(correctAnsweer);
   }
 

@@ -23,19 +23,19 @@ const createTasksAndAnswers = () => {
     const startNumber = getRandomNumber();
     const length = getRandomNumber(MIN_PROGRESSION_LENGTH) + MIN_PROGRESSION_LENGTH;
     const randomIndex = getRandomNumber(length);
-  
+
     const progression = createProgression(multiplier, startNumber, length);
     const answer = String(progression[randomIndex]);
     progression[randomIndex] = HIDDEN;
     tasks.push(progression.join(' '));
-  
+
     correctAnsweers.push(answer);
   }
 
   return [tasks, correctAnsweers];
 };
 
-const [ tasks, answers ] = createTasksAndAnswers();
+const [tasks, answers] = createTasksAndAnswers();
 
 const playProgression = () => play(QESTION, tasks, answers);
 

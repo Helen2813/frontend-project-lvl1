@@ -32,7 +32,7 @@ const createTasksAndAnswers = () => {
   for (let i = 0; i < ROUNDS_NUMBER + 1; i += 1) {
     const randomNumber = getRandomNumber(100);
     tasks.push(randomNumber);
-  
+
     correctAnsweers.push(isNumberPrime(randomNumber) ? ANSWER_YES : ANSWER_NO);
   }
 
