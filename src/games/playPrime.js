@@ -1,5 +1,4 @@
-import { play, ROUNDS_NUMBER } from '../index.js';
-import { getRandomNumber } from '../cli.js';
+import { play, ROUNDS_NUMBER, getRandomNumber } from '../index.js';
 
 const QESTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const ANSWER_YES = 'yes';
@@ -39,8 +38,10 @@ const createTasksAndAnswers = () => {
   return [tasks, correctAnsweers];
 };
 
-const [tasks, answers] = createTasksAndAnswers();
+const playPrime = () => {
+  const [tasks, answers] = createTasksAndAnswers();
 
-const playPrime = () => play(QESTION, tasks, answers);
+  return play(QESTION, tasks, answers);
+};
 
 export default playPrime;

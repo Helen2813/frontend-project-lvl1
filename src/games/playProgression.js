@@ -1,6 +1,5 @@
 /* eslint-disable no-return-assign */
-import { play, ROUNDS_NUMBER } from '../index.js';
-import { getRandomNumber } from '../cli.js';
+import { play, ROUNDS_NUMBER, getRandomNumber } from '../index.js';
 
 const QESTION = 'What number is missing in the progression?';
 const HIDDEN = '..';
@@ -35,8 +34,10 @@ const createTasksAndAnswers = () => {
   return [tasks, correctAnsweers];
 };
 
-const [tasks, answers] = createTasksAndAnswers();
+const playProgression = () => {
+  const [tasks, answers] = createTasksAndAnswers();
 
-const playProgression = () => play(QESTION, tasks, answers);
+  return play(QESTION, tasks, answers);
+};
 
 export default playProgression;

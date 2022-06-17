@@ -26,3 +26,5 @@ export const play = (question, tasksArray, correctAnsweersArray) => {
     }
   }
 };
+
+export const getRandomNumber = (max = 10) => Math.floor(Math.random() * max);

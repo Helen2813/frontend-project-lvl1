@@ -1,5 +1,4 @@
-import { play, ROUNDS_NUMBER } from '../index.js';
-import { getRandomNumber } from '../cli.js';
+import { play, ROUNDS_NUMBER, getRandomNumber } from '../index.js';
 
 const ANSWER_YES = 'yes';
 const ANSWER_NO = 'no';
@@ -20,8 +19,10 @@ const createTasksAndAnswers = () => {
   return [tasks, correctAnsweers];
 };
 
-const [tasks, answers] = createTasksAndAnswers();
+const playIsEven = () => {
+  const [tasks, answers] = createTasksAndAnswers();
 
-const playIsEven = () => play(QESTION, tasks, answers);
+  return play(QESTION, tasks, answers);
+};
 
 export default playIsEven;

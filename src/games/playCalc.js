@@ -1,17 +1,19 @@
-import { play, ROUNDS_NUMBER } from '../index.js';
-import { getRandomNumber } from '../cli.js';
+import { play, ROUNDS_NUMBER, getRandomNumber } from '../index.js';
 
 const ARITHMETIC_SIGNS = ['+', '-', '*'];
 const QESTION = 'What is the result of the expression?';
 
 const calculate = (firstNumber, secondNumber, operation) => {
-  if (operation === '+') {
-    return firstNumber + secondNumber;
-  } if (operation === '-') {
-    return firstNumber - secondNumber;
+  switch (operation) {
+    case '+':
+      return firstNumber + secondNumber;
+    case '-':
+      return firstNumber - secondNumber;
+    case '*':
+      return firstNumber * secondNumber;
+    default:
+      return null;
   }
-
-  return firstNumber * secondNumber;
 };
 
 const createTasksAndAnswers = () => {
@@ -35,8 +37,10 @@ const createTasksAndAnswers = () => {
   return [tasks, correctAnsweers];
 };
 
-const [tasks, answers] = createTasksAndAnswers();
+const playCalc = () => {
+  const [tasks, answers] = createTasksAndAnswers();
 
-const playCalc = () => play(QESTION, tasks, answers);
+  return play(QESTION, tasks, answers);
+};
 
 export default playCalc;
